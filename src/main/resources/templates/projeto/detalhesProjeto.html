@@ -1,0 +1,62 @@
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head>
+	  <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+		<link rel="stylesheet" href="style/style.css"/>
+	
+		<title>App de Gerenciamento</title>
+	</head>
+
+	<body>
+			<header>
+				 <nav>
+				    <div class="nav-wrapper">
+				      <a href="#" class="brand-logo">Projetos</a>
+				      <ul id="nav-mobile" class="right hide-on-med-and-down">
+				        <li><a href="/projetos" class="waves-effect waves-light btn"><i class="material-icons right">add_circle_outline</i>Cadastro de Projetos</a></li>
+				      </ul>
+				    </div>
+				  </nav>
+		</header>
+		
+			<div th:each="projeto : ${projeto}" class="container detalhesEvento" >
+				<h5>Detalhes do Evento</h5>
+ 				<div class="row">
+ 						<p>Nome:<span th:text="${projeto.nome}"></span></p>
+ 						<p>Prazo:<span th:text="${projeto.prazo}"></span></p>
+ 						<p>Data de Inicio:<span th:text="${projeto.dataInicio}"></span></p>
+ 				</div>
+ 			</div>
+ 		
+    /*	
+ 			<div class="container formConvidado" >
+ 				<form method="post" th:object="${convidado}">
+ 					Nome: <input type="text" value="" name="nomeConvidado" placeholder="Nome completo"/>
+ 					Rg: <input type="text" value="" name="rg" placeholder="AA-00.000.000 " class="validate"/>
+ 					<button class="waves-effect waves-light btn" type="submit">Adicionar</button>
+ 				</form>
+ 				</div>
+ 				<table class="container tabelaConvidado">
+ 					<div class="row">
+ 						<thead>
+ 							<tr> 
+ 								<th>Nome Convidado</th>
+ 								<th>Rg</th>
+ 								<th>Deletar</th>
+ 							</tr>
+ 						</thead>
+ 						
+ 						</table>
+ 		*/
+ 						<!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+	</body>
+
+</html>
