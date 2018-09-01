@@ -14,7 +14,7 @@
 	
 	   <link rel="stylesheet" href="style/style.css"/>
 		
-		<title>App Evento </title>
+		<title>Manager Project</title>
 	</head>
 
 	<body>
@@ -23,7 +23,7 @@
 				    <div class="nav-wrapper">
 				      <a href="#" class="brand-logo">Cadastro de Projeto</a>
 				      <ul id="nav-mobile" class="right hide-on-med-and-down">
-				        <li><a href="/" class="waves-effect waves-light btn"><i class="material-icons right">add_circle_outline</i>Projetos</a></li>
+				        <li><a href="/projetos" class="waves-effect waves-light btn"><i class="material-icons right">add_circle_outline</i>Projetos</a></li>
 				      </ul>
 				    </div>
 				  </nav>
@@ -34,13 +34,13 @@
 		<div class="container formProjeto">
 			<h1>Cadastre seu Projeto </h1>
 		<form class="container" method="post">
-				Nome: <input type="text" value="" name="nome"/>
+				Nome: <input type="text" value="" name="nome" placeholder="José Severino Cristino" required/>
 			<div class="row">
 				<div class="input-field col s6">
-					Prazo Dezejavel: <input type="text" value="" name="prazo"/>
+					Prazo Dezejavel: <input type="text" value="" placeholder="Sexta-feira" name="prazo" required/>
 				</div>
 				<div class="input-field col s6">
-					Data Inicio: <input type="date" value="" name="dataInicio"/>
+					Data Inicio: <input type="date" value=""  name="dataInicio" required/>
 				</div>
 			</div>
 	

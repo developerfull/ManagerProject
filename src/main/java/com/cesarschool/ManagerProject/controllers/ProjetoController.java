@@ -1,4 +1,4 @@
-package com.cesarschool.IHRV.ManagerProject.controllers;
+package com.cesarschool.ManagerProject.controllers;
 
 import javax.validation.Valid;
 
@@ -11,8 +11,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.cesarschool.IHRV.ManagerProject.model.Projeto;
-import com.cesarschool.IHRV.ManagerProject.repository.ProjetoRepository;
+import com.cesarschool.ManagerProject.model.Membro;
+import com.cesarschool.ManagerProject.model.Projeto;
+import com.cesarschool.ManagerProject.repository.MembroRepository;
+import com.cesarschool.ManagerProject.repository.ProjetoRepository;
+
+
 
 
 @Controller
@@ -20,6 +24,9 @@ public class ProjetoController {
 
 	@Autowired
 	private ProjetoRepository pr;
+	
+	@Autowired
+	private MembroRepository mr;
 	
 	// Inicio de Requisição e Redericionamento para página de Cadastro
 	@RequestMapping(value="/cadastrarprojeto", method=RequestMethod.GET)
@@ -29,14 +36,9 @@ public class ProjetoController {
 	
 	// Envio da Requisição e Registro das informações no BD 
 	@RequestMapping(value="/cadastrarprojeto", method=RequestMethod.POST)
-	public String form(@Valid Projeto projeto, BindingResult result, RedirectAttributes attributes) {
-		if(result.hasErrors()) {
-			attributes.addFlashAttribute("mensagem", "Verifique os campos!");
-			return "redirect:/cadastrarprojeto";
-		}
+	public String form(Projeto projeto) {
 		
 		pr.save(projeto);
-		attributes.addFlashAttribute("mensagem", "Projeto Cadastrado com Sucesso!");
 		return "redirect:/cadastrarprojeto";
 	}
 	
@@ -48,20 +50,52 @@ public class ProjetoController {
 		mv.addObject("projetos", projetos);
 		return mv; 
 	}
-	//Requisição de Lista e Detalhes do Projeto
+	
+	//Requisição de Lista de Detalhes de Cada Projeto
 	@RequestMapping(value="/{codigo}", method=RequestMethod.GET)
-	public ModelAndView detalhesProjeto(@PathVariable("codigo")long codigo) {
+	public ModelAndView detalhesProjeto(@PathVariable("codigo") long codigo) {
 		Projeto projeto = pr.findByCodigo(codigo);
 		ModelAndView mv = new ModelAndView("projeto/detalhesProjeto");
 		mv.addObject("projeto", projeto);
 		
-		/*
-		Iterable<Convidado> convidados = cr.findByEvento(evento);
-		mv.addObject("convidados", convidados);
-		*/
+		Iterable<Membro> membros = mr.findByProjeto(projeto);
+		mv.addObject("membros", membros);
+		
 		
 		return mv;
 	}
+	
+	//Requisição que tem por ação deletar o projeto
+	@RequestMapping("/deletarProjeto")
+	public String deletarProjeto(long codigo) {
+		Projeto projeto = pr.findByCodigo(codigo);
+		pr.delete(projeto);
+		return "redirect:/projetos";
+	}
+	
+	
+	@RequestMapping(value="/{codigo}", method=RequestMethod.POST)
+	public String detalhesProjetoPost(@PathVariable("codigo")long codigo, Membro membro) {
+		
+		Projeto projeto = pr.findByCodigo(codigo);
+		membro.setProjeto(projeto);
+		mr.save(membro);
+		
+		return "redirect:/{codigo}";
+	}
+	
+	@RequestMapping("/deletarMembro")
+	public String deletarMembro(String cpf) {
+		Membro membro = mr.findByCpf(cpf);
+		mr.delete(membro);
+		
+		Projeto projeto = membro.getProjeto();
+		long codigoLong = projeto.getCodigo();
+		String codigo = "" + codigoLong;
+		return "redirect:/" + codigo;
+	}
+	
+	
 	
 	
 }

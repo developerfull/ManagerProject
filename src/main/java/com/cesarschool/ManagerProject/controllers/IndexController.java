@@ -1,4 +1,4 @@
-package com.cesarschool.IHRV.ManagerProject.controllers;
+package com.cesarschool.ManagerProject.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,7 +8,6 @@ public class IndexController {
 
 	@RequestMapping("/")
 	public String index() {
-		return "index";
+		return "redirect:/projetos";
 	}
-	
 }

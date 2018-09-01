@@ -1,8 +1,7 @@
-package com.cesarschool.IHRV.ManagerProject.repository;
+package com.cesarschool.ManagerProject.repository;
 
 import org.springframework.data.repository.CrudRepository;
-
-import com.cesarschool.IHRV.ManagerProject.model.Projeto;
+import com.cesarschool.ManagerProject.model.Projeto;
 
 public interface ProjetoRepository extends CrudRepository<Projeto, String>{
 
