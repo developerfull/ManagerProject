@@ -18,7 +18,7 @@ public class Membro {
 	@NotEmpty
 	private String cargo;
 	@NotEmpty
-	private int cargaHoraria;
+	private String cargaHoraria;
 	@NotEmpty
 	private String dias;
 	
@@ -49,10 +49,10 @@ public class Membro {
 	public void setCargo(String cargo) {
 		this.cargo = cargo;
 	}
-	public int getCargaHoraria() {
+	public String getCargaHoraria() {
 		return cargaHoraria;
 	}
-	public void setCargaHoraria(int cargaHoraria) {
+	public void setCargaHoraria(String cargaHoraria) {
 		this.cargaHoraria = cargaHoraria;
 	}
 	public String getDias() {

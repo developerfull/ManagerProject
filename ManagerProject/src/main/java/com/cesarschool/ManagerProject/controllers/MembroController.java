@@ -11,7 +11,5 @@ public class MembroController {
 		return "membro/pessoas";
 	}
 	
-
-	
 	
 }
