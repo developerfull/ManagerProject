@@ -11,12 +11,14 @@ import com.cesarschool.ManagerProject.model.Login;
 @Controller
 public class LoginController {
 
+	//Mapeamento de Requisição do Login
 	@RequestMapping(value="conta/login", method=RequestMethod.GET)
 	public String getLogin() {
 		
 		return "conta/login";
 	}
 	
+	//Transação da tela de Login
 	@RequestMapping(value="conta/login", method=RequestMethod.POST)
 	public String login(@ModelAttribute(name="login") Login login, Model model) {
 		
