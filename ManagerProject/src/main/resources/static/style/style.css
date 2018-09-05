@@ -1,0 +1,29 @@
+.formProjeto{
+	
+	box-shadow: 0px 0px 5px grey;
+	padding-top: 20px;
+	padding-left: 20px;
+	padding-bottom: 10px;	
+	margin-bottom: 60px;
+	
+}
+
+.nav-wrapper{ 
+	background-color: #39389D;
+} 
+
+.waves-effect{
+background-color: #FC9C19;
+}
+
+.waves-light{
+background-color: #FC9C19;
+}
+
+.btn{
+	background-color: #6064BE;
+}
+
+.btn-small{
+	background-color: #B22222;
+}
