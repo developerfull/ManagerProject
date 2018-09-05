@@ -30,7 +30,11 @@ public class ContaController {
 		public String form(Conta conta) {
 			
 			cr.save(conta);
+<<<<<<< HEAD
 			return "redirect:conta/login";
+=======
+			return "redirect:conta/conta";
+>>>>>>> refs/remotes/origin/master
 		}
 		
 	
