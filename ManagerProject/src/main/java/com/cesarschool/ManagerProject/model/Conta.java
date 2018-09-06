@@ -16,6 +16,23 @@ public class Conta {
 	@NotEmpty
 	private String senha;
 
+<<<<<<< HEAD
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+=======
 	@NotEmpty
 	private String cpf;
 
@@ -76,6 +93,7 @@ public class Conta {
 		this.telefone = telefone;
 	}
 
+>>>>>>> refs/remotes/origin/master
 
 	
 }
