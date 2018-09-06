@@ -2,13 +2,17 @@ package com.cesarschool.ManagerProject.controllers;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -62,10 +66,30 @@ public class TarefaController {
 	
 	// Cadastro efetuado de tarefa
 	@RequestMapping(value="/cadastrartarefa", method=RequestMethod.POST)
-	public String form(Tarefa tarefa) {
+	public String cadastrarTarefa(Tarefa tarefa) {
 		
 		tarefaRepository.save(tarefa);
 		return "redirect:/cadastrartarefa";
 	}
 	
+	@PutMapping(value="/api/cadastrartarefa")
+	public Tarefa salvarTarefaAPI(Tarefa tarefa) {
+		return tarefaRepository.save(tarefa);
+	}
+	
+	@GetMapping(value="/api/tarefas/{id}")
+	public Tarefa carregarTarefaAPI(@PathVariable Long id) {
+		Optional<Tarefa> tarefa = tarefaRepository.findById(id);
+		return tarefa.isPresent() ? tarefa.get() : null;
+	}
+	
+	@GetMapping(value="/api/tarefas")
+	public Iterable<Tarefa> carregarTarefasAPI() {
+		return tarefaRepository.findAll();
+	}
+	
+	@PutMapping(value="/api/deletartarefa")
+	public void deletarCalendarioAPI(@RequestBody Long id) {
+		tarefaRepository.deleteById(id);
+	}
 }

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -35,7 +36,7 @@ private static final long serialVersionUID = 1L;
 	@OneToMany
 	private List<Membro> membros = new ArrayList<Membro>();
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "projeto", targetEntity = Tarefa.class)
 	private List<Tarefa> tarefas = new ArrayList<Tarefa>();
 	
 	public long getCodigo() {

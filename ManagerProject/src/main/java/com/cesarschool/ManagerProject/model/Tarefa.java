@@ -31,7 +31,7 @@ public class Tarefa {
 	
 	private Date diaMinimoInicio;
 	
-	@ManyToOne(cascade = CascadeType.ALL, optional = false)
+	@ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = Projeto.class)
 	private Projeto projeto;
 	
 	public long getId() {

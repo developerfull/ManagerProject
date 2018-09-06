@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.cesarschool.ManagerProject.model.Calendario;
@@ -130,20 +131,26 @@ public class CalendarioController {
 		return apres;
 	}
 	
-	@PutMapping(value="/cadastrarcalendario")
+	@PutMapping(value="/api/cadastrarcalendario", produces = "application/json")
+	@ResponseBody
 	public Calendario salvarCalendario(@RequestBody Calendario calendario) {
 		return calendarioRepository.save(calendario);
 	}
 	
-	@PutMapping(value="/deletarcalendario/{id}")
-	public void deletarCalendarioAPI(@PathVariable Long id) {
+	@PutMapping(value="/api/deletarcalendario", produces = "application/json")
+	public void deletarCalendarioAPI(@RequestBody Long id) {
 		calendarioRepository.deleteById(id);
 	}
 	
-	@GetMapping(value="/calendarios/id={id}")
+	@GetMapping(value="/api/calendarios/id={id}", produces = "application/json")
 	public Calendario listarCalendarioAPI(@PathVariable Long id) {
 		Optional<Calendario> calendario = calendarioRepository.findById(id);
 		return calendario.isPresent() ? calendario.get() : null;	
+	}
+	
+	@GetMapping(value="/api/calendarios", produces = "application/json")
+	public Iterable<Calendario> listarCalendariosAPI() {
+		return calendarioRepository.findAll();
 	}
 	
 	@RequestMapping("/calendarios")
