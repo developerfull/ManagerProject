@@ -21,9 +21,9 @@
 		<header>
 				 <nav>
 				    <div class="nav-wrapper">
-				      <a href="#" class="brand-logo">Cadastro de Projeto</a>
+				      <a href="#" class="brand-logo">Cadastro de Conta</a>
 				      <ul id="nav-mobile" class="right hide-on-med-and-down">
-				        <li><a href="/projetos" class="waves-effect waves-light btn"><i class="material-icons right">add_circle_outline</i>Projetos</a></li>
+				         <li><a href="/conta/login" class="waves-effect waves-light btn"><i class="material-icons right">add_circle_outline</i>Login</a></li>
 				      </ul>
 				    </div>
 				  </nav>
@@ -32,16 +32,18 @@
 		
 		
 		<div class="container formProjeto">
-			<h1>Cadastre seu Projeto </h1>
+			<h1>Cadastre sua Conta </h1>
 		<form class="container" method="post">
-				Nome: <input type="text" value="" name="nome" placeholder="José Severino Cristino" required/>
 			<div class="row">
 				<div class="input-field col s6">
-					Prazo Dezejavel: <input type="text" value="" placeholder="Sexta-feira" name="prazo" required/>
+
+					Nome: <input type="text" value="" name="nome" placeholder="Carlos Henrique" required/>
 				</div>
+					
 				<div class="input-field col s6">
-					Data Inicio: <input type="date" value=""  name="dataInicio" required/>
-				</div>
+					Senha: <input type="password" value="" name="senha" placeholder="*****" required/>
+				</div>	
+		
 			</div>
 	
 			<button type="submit" class="waves-effect waves-light btn">Salvar</button>	

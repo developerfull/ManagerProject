@@ -21,9 +21,9 @@
 		<header>
 				 <nav>
 				    <div class="nav-wrapper">
-				      <a href="#" class="brand-logo">Cadastro de Projeto</a>
+				      <a href="#" class="brand-logo">Cadastro de Calendario</a>
 				      <ul id="nav-mobile" class="right hide-on-med-and-down">
-				        <li><a href="/projetos" class="waves-effect waves-light btn"><i class="material-icons right">add_circle_outline</i>Projetos</a></li>
+				        <li><a href="/calendarios" class="waves-effect waves-light btn"><i class="material-icons right">add_circle_outline</i>Projetos</a></li>
 				      </ul>
 				    </div>
 				  </nav>
@@ -31,16 +31,13 @@
 		
 		
 		
-		<div class="container formProjeto">
-			<h1>Cadastre seu Projeto </h1>
+		<div class="container formCalendario">
+			<h1>Cadastre um calendario</h1>
 		<form class="container" method="post">
-				Nome: <input type="text" value="" name="nome" placeholder="José Severino Cristino" required/>
+				Descricao: <input type="text" value="" name="descricao" placeholder="" required/>
 			<div class="row">
 				<div class="input-field col s6">
-					Prazo Dezejavel: <input type="text" value="" placeholder="Sexta-feira" name="prazo" required/>
-				</div>
-				<div class="input-field col s6">
-					Data Inicio: <input type="date" value=""  name="dataInicio" required/>
+					Feriados: <input type="text" value="" placeholder="25/12;01/01" name="feriadosText"/>
 				</div>
 			</div>
 	
