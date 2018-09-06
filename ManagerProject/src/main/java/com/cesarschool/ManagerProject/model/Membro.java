@@ -28,6 +28,18 @@ public class Membro {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
+	public String getCargaHoraria() {
+		return cargaHoraria;
+	}
+	public void setCargaHoraria(String cargaHoraria) {
+		this.cargaHoraria = cargaHoraria;
+	}
+	public String getDias() {
+		return dias;
+	}
+	public void setDias(String dias) {
+		this.dias = dias;
+	}
 	@ManyToOne
 	private Projeto projeto;
 	
@@ -49,18 +61,7 @@ public class Membro {
 	public void setCargo(String cargo) {
 		this.cargo = cargo;
 	}
-	public String getCargaHoraria() {
-		return cargaHoraria;
-	}
-	public void setCargaHoraria(String cargaHoraria) {
-		this.cargaHoraria = cargaHoraria;
-	}
-	public String getDias() {
-		return dias;
-	}
-	public void setDias(String dias) {
-		this.dias = dias;
-	} 
+	
 	
 }
 

@@ -20,22 +20,19 @@
 				    <div class="nav-wrapper">
 				      <a href="#" class="brand-logo">Projetos</a>
 				      <ul id="nav-mobile" class="right hide-on-med-and-down">
-<<<<<<< HEAD
+
 				        <li><a href="/projetos" class="waves-effect waves-light btn"><i class="material-icons left">dashboard</i>Cadastro de Projetos</a></li>
-=======
-				        <li><a href="/projetos" class="waves-effect waves-light btn"><i class="material-icons right">add_circle_outline</i>Cadastro de Projetos</a></li>
->>>>>>> refs/remotes/origin/master
 				      </ul>
 				    </div>
 				  </nav>
 		</header>
 		
-			<div th:each="projeto : ${projetos}" class="container detalhesProjeto" >
-				<h5>Detalhes do Projeto</h5>
- 				<div class="row">
- 						<p>Nome: <span th:text=" ${projeto.nome}"></span></p>
- 						<p>Prazo: <span th:text=" ${projeto.prazo}"></span></p>
- 						<p>Data de Inicio: <span th:text=" ${projeto.dataInicio}"></span></p>
+			<div th:each="projeto : ${projeto}" class="container detalhesProjeto" >
+				<h5 class="indigo-text">Detalhes do Projeto</h5>
+ 				<div class="card-panel">
+ 						<p>Nome: <span class="red-text text-darken-2" th:text=" ${projeto.nome}"></span></p>
+ 						<p>Prazo: <span class="red-text text-darken-2" th:text=" ${projeto.prazo}"></span></p>
+ 						<p>Data de Inicio: <span class="red-text text-darken-2" th:text=" ${projeto.dataInicio}"></span></p>
  				</div>
  			</div>
  		
@@ -54,10 +51,10 @@
  						Cargo: <input type="text" value="" name="cargo" placeholder="Cargo"/>
  					</div>
  					<div class="input-field col s6">	
- 						Carga Horaria: <input type="text" value="" name="cargaHoraria" placeholder="8hrs"/>
+ 						Carga Horaria: <input type="number" value="" name="cargaHoraria" placeholder="8hrs"/>
  					</div>
  					<div class="input-field col s6">
- 						Dias: <input type="text" value="" name="dias" placeholder="Dias"/>
+ 						Dias: <input type="number" value="" name="dias" placeholder="Dias"/>
  					</div>
  					</div>
  					<button onclick="M.toast({html: 'Membro Cadastrado'})" class="waves-effect waves-light btn" type="submit">Adicionar</button>

@@ -1,0 +1,53 @@
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head>
+	  <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+		<link rel="stylesheet" href="style/style.css"/>
+	
+		<title>App de Gerenciamento</title>
+	</head>
+
+	<body>
+			<header>
+				 <nav>
+				    <div class="nav-wrapper">
+				      <a href="#" class="brand-logo">Projetos</a>
+				      <ul id="nav-mobile" class="right hide-on-med-and-down">
+				        <li><a href="/projetos" class="waves-effect waves-light btn"><i class="material-icons left">dashboard</i>Cadastro de Projetos</a></li>
+				      	<li><a href="/conta" class="waves-effect waves-light btn"><i class="material-icons left">dashboard</i>Conta</a></li>
+				      </ul>
+				    </div>
+				  </nav>
+		</header>
+			
+			<table class="container tabelaMembro">
+ 					<div class="row">
+ 						<thead>
+ 							<tr> 			
+ 								<th>Nome</th>
+ 								<th>Senha</th>
+ 								<th>Deletar</th>
+ 						</thead>
+ 							<tbody>
+ 							<tr th:each="contas : ${contas}">
+ 								<td><span th:text="${contas.nome}"></span></td>
+ 								<td><span th:text="${contas.senha}"></span></td>
+ 							    <td><a class="waves-effect waves-light btn-small" th:href="${(#mvc.url('CC#deletarConta').arg(0, contas.nome)).build()}"><i class="material-icons left">delete</i></a></td>  
+ 							</tr>
+ 						</tbody>
+ 						
+ 						</table>
+			
+ 		
+ 						<!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+	</body>
+
+</html>
