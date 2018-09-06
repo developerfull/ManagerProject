@@ -34,13 +34,12 @@
 		<div class="container formCalendario">
 			<h1>Cadastre um calendario</h1>
 		<form class="container" method="post">
-				Descricao: <input type="text" value="" name="descricao" placeholder="" required/>
-			<div class="row">
-				<div class="input-field col s6">
-					Feriados: <input type="text" value="" placeholder="25/12;01/01" name="feriadosText"/>
-				</div>
-			</div>
-	
+				Descricao: <input th:value="${calendario.descricao}" type="text" value="" name="descricao" placeholder="" required/>
+				<br>
+				Feriados cíclicos (todo ano): <input  th:value="${calendario.feriadosCiclicos}" type="text" value="" placeholder="25/12;01/01" name="feriadosCiclicos"/>
+				<br>
+				Feriados fixos: <input  th:value="${calendario.feriadosFixos}" type="text" value="" placeholder="20/02/2018;22/02/2019" name="feriadosFixos"/>
+				<br>
 			<button type="submit" class="waves-effect waves-light btn">Salvar</button>	
 		
 		</form>
