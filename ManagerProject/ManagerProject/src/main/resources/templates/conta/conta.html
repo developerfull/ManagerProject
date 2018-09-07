@@ -1,0 +1,53 @@
+<!DOCTYPE html> 
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  >
+	<head>
+	
+	  <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+       <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	
+	   <link rel="stylesheet" href="style/style.css"/>
+		
+		<title>Manager Project</title>
+	</head>
+ 	<body>
+		<header>
+				 <nav>
+				    <div class="nav-wrapper">
+				      <a href="#" class="brand-logo">Cadastro de Conta</a>
+				      <ul id="nav-mobile" class="right hide-on-med-and-down">
+				         <li><a href="/conta/login" class="waves-effect waves-light btn"><i class="material-icons right">add_circle_outline</i>Login</a></li>
+				      </ul>
+				    </div>
+				  </nav>
+		</header>
+		
+		
+		
+		<div class="container formProjeto">
+			<h1>Cadastre sua Conta </h1>
+		<form class="container" method="post">
+			<div class="row">
+				<div class="input-field col s6">
+					Nome: <input type="text" value="" name="nome" placeholder="Carlos Henrique" required/>
+				</div>
+					
+				<div class="input-field col s6">
+					Senha: <input type="password" value="" name="senha" placeholder="*****" required/>
+				</div>	
+		
+			</div>
+	
+			<button type="submit" class="waves-effect waves-light btn">Salvar</button>	
+		
+		</form>
+		</div>
+	  <!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+	 </body>
+ </html>
