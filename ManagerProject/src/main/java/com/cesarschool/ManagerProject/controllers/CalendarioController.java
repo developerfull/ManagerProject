@@ -142,13 +142,15 @@ public class CalendarioController {
 		calendarioRepository.deleteById(id);
 	}
 	
-	@GetMapping(value="/api/calendarios/id={id}", produces = "application/json")
+	@GetMapping(value="/api/calendarios/{id}", produces = "application/json")
+	@ResponseBody
 	public Calendario listarCalendarioAPI(@PathVariable Long id) {
 		Optional<Calendario> calendario = calendarioRepository.findById(id);
 		return calendario.isPresent() ? calendario.get() : null;	
 	}
 	
 	@GetMapping(value="/api/calendarios", produces = "application/json")
+	@ResponseBody
 	public Iterable<Calendario> listarCalendariosAPI() {
 		return calendarioRepository.findAll();
 	}

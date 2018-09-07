@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,10 +34,10 @@ private static final long serialVersionUID = 1L;
 	@ManyToOne
 	private Calendario calendario;
 
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "projeto", targetEntity = Membro.class)
 	private List<Membro> membros = new ArrayList<Membro>();
 	
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "projeto", targetEntity = Tarefa.class)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "projeto", targetEntity = Tarefa.class)
 	private List<Tarefa> tarefas = new ArrayList<Tarefa>();
 	
 	public long getCodigo() {

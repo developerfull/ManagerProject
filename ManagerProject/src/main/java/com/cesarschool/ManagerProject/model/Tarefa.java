@@ -1,10 +1,12 @@
 package com.cesarschool.ManagerProject.model;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -12,8 +14,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 @Entity
-public class Tarefa {
+public class Tarefa implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue
@@ -24,14 +35,15 @@ public class Tarefa {
 	
 	private String descricao;
 	
-	@ManyToOne
+	@ManyToOne(targetEntity = Membro.class)
 	private Membro executor;
 
 	private float duracaoEmDias;
 	
 	private Date diaMinimoInicio;
 	
-	@ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = Projeto.class)
+	@JsonProperty(access = Access.WRITE_ONLY)
+	@ManyToOne(fetch = FetchType.LAZY, optional = false, targetEntity = Projeto.class)
 	private Projeto projeto;
 	
 	public long getId() {
@@ -80,5 +92,13 @@ public class Tarefa {
 
 	public void setDiaMinimoInicio(Date diaMinimoInicio) {
 		this.diaMinimoInicio = diaMinimoInicio;
+	}
+
+	public Projeto getProjeto() {
+		return projeto;
+	}
+
+	public void setProjeto(Projeto projeto) {
+		this.projeto = projeto;
 	}
 }

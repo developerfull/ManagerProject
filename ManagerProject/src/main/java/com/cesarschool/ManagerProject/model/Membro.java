@@ -1,11 +1,14 @@
 package com.cesarschool.ManagerProject.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.ManyToAny;
 import org.hibernate.validator.constraints.NotEmpty;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Membro {
@@ -28,7 +31,9 @@ public class Membro {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-	@ManyToOne
+	
+	@JsonIgnore(a
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Projeto projeto;
 	
 	public String getNome() {
