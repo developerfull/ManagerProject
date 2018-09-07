@@ -1,5 +1,6 @@
 package com.cesarschool.ManagerProject.model;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.time.MonthDay;
 import java.util.ArrayList;
@@ -14,7 +15,12 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Calendario {
+public class Calendario implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue

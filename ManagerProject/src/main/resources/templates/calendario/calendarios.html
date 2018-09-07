@@ -35,7 +35,8 @@
  						<thead>
  							<tr> 
  								<th>Descricao</th>
- 								<th>Feriados</th>
+ 								<th>Feriados cíclicos</th>
+ 								<th>Feriados fixos</th>
  								<th>Deletar</th>
  							</tr>
  						</thead>
@@ -43,11 +44,16 @@
  							<tr th:each="calendario : ${calendarios}">
  								<td th:text="${calendario.descricao}"</td>
  								<td>
- 									<!--<td th:if=${calendario.feriados != null} th:each="feriado : ${calendario.feriados}">
- 										<span th:text="${feriado}></span>
- 									</td>-->
+	 								<span th:each="feriado : ${calendario.feriadosFixos}">
+ 										<li><span th:text="${feriado}"/></li>
+ 									</span>
  								</td>
- 								<td><a class="waves-effect waves-light btn-small" th:href="${(#mvc.url('PC#deletarCalendario').arg(0, calendario.id)).build()}"><i class="material-icons left">delete</i></a></td> 
+ 								<td>
+	 								<span th:each="feriado : ${calendario.feriadosCiclicos}">
+ 										<li><span th:text="${feriado}"/></li>
+ 									</span>
+ 								</td>
+ 								<td><a class="waves-effect waves-light btn-small" th:href="${(#mvc.url('CC#deletarCalendario').arg(0, calendario.id)).build()}"><i class="material-icons left">delete</i></a></td> 
  							</tr>
  						</tbody>
  						

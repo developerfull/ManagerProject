@@ -1,11 +1,16 @@
 package com.cesarschool.ManagerProject.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.ManyToAny;
 import org.hibernate.validator.constraints.NotEmpty;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @Entity
 public class Membro {
@@ -28,19 +33,9 @@ public class Membro {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-	public String getCargaHoraria() {
-		return cargaHoraria;
-	}
-	public void setCargaHoraria(String cargaHoraria) {
-		this.cargaHoraria = cargaHoraria;
-	}
-	public String getDias() {
-		return dias;
-	}
-	public void setDias(String dias) {
-		this.dias = dias;
-	}
-	@ManyToOne
+	
+	@JsonProperty(access = Access.WRITE_ONLY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Projeto projeto;
 	
 	public String getNome() {
@@ -61,9 +56,17 @@ public class Membro {
 	public void setCargo(String cargo) {
 		this.cargo = cargo;
 	}
-	
+	public String getCargaHoraria() {
+		return cargaHoraria;
+	}
+	public void setCargaHoraria(String cargaHoraria) {
+		this.cargaHoraria = cargaHoraria;
+	}
+	public String getDias() {
+		return dias;
+	}
+	public void setDias(String dias) {
+		this.dias = dias;
+	} 
 	
 }
-
-
-

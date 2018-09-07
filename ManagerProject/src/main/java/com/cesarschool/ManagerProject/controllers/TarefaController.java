@@ -1,16 +1,26 @@
 package com.cesarschool.ManagerProject.controllers;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -62,10 +72,41 @@ public class TarefaController {
 	
 	// Cadastro efetuado de tarefa
 	@RequestMapping(value="/cadastrartarefa", method=RequestMethod.POST)
-	public String form(Tarefa tarefa) {
+	public String cadastrarTarefa(Tarefa tarefa) {
 		
 		tarefaRepository.save(tarefa);
 		return "redirect:/cadastrartarefa";
 	}
 	
+	@PutMapping(value="/api/cadastrartarefa", produces = "application/json")
+	@ResponseBody
+	public Tarefa salvarTarefaAPI(@RequestBody Tarefa tarefa) {
+		
+		// Admite que será passado o CPF do executor
+		tarefa.setExecutor(membroRepository.findByCpf(tarefa.getExecutor().getCpf()));
+		
+		// Admite que será passado o codigo do projeto
+		tarefa.setProjeto(projetoRepository.findByCodigo(tarefa.getProjeto().getCodigo()));
+		
+		return tarefaRepository.save(tarefa);
+	}
+	
+	@GetMapping(value="/api/tarefas/{id}")
+	@ResponseBody	
+	public Tarefa carregarTarefaAPI(@PathVariable long id) {
+		Optional<Tarefa> tarefa = tarefaRepository.findById(id);
+		return tarefa.isPresent() ? tarefa.get() : null;
+	}
+	
+	@GetMapping(value="/api/tarefas")
+	@ResponseBody
+	public Iterable<Tarefa> carregarTarefasAPI() {
+		return tarefaRepository.findAll();
+	}
+	
+	@PutMapping(value="/api/deletartarefa/{id}")
+	@ResponseStatus(value = HttpStatus.OK)
+	public void deletarCalendarioAPI(@PathVariable long id) {
+		tarefaRepository.deleteById(id);
+	}
 }
