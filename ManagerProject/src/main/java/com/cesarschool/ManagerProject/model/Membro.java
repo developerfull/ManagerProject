@@ -9,6 +9,8 @@ import org.hibernate.annotations.ManyToAny;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @Entity
 public class Membro {
@@ -32,7 +34,7 @@ public class Membro {
 		this.cpf = cpf;
 	}
 	
-	@JsonIgnore(a
+	@JsonProperty(access = Access.WRITE_ONLY)
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Projeto projeto;
 	
